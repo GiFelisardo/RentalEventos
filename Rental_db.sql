@@ -12,13 +12,13 @@ create table Equipamentos(
 	Marca varchar(100) not null,
 	Modelo varchar(100) not null,
 	Categoria varchar(100) not null,
-	Potência varchar(100),
+	Potencia varchar(100),
 	Material varchar(100) not null,
 	Peso varchar(100) not null,
-	Dimensões varchar(100) not null,
+	Dimensoes varchar(100) not null,
 	Cor varchar(100) not null,
-	Quantidade_disponivel char(15),
-	Quantidade_minima char(15)
+	Quantidade_disponivel integer,
+	Quantidade_minima integer
 );
 
 create table Estoque(
@@ -32,7 +32,7 @@ create table Estoque(
 	constraint Funcionario_id foreign key (FuncionarioId)
 	references Funcionario (Id),
 	Tipo_movimentacao varchar(100) not null,
-	numero_locacoes char(15)
+	numero_locacoes integer
 );
 	
 alter table funcionario add column Senha varchar(8) not null;	

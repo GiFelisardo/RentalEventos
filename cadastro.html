@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <main class="equipamentos">
+        <div class="cadastro-equipamentos">
+            <H1>Equipamentos</H1>
+            <input type="text" placeholder="Marca">
+            <input type="text" placeholder="Modelo">
+            <label for="categoria"></label>
+            <select name="categoria" id="categoria">
+                <option value="">Todas</option>
+                <option value="Cadeiras">Cadeiras</option>
+                <option value="Mesas">Mesas</option>
+                <option value="Áudio">Áudio</option>
+                <option value="Projetor">Projetor</option>
+                <option value="Microfone">Microfone</option>
+                <option value="Tendas">Tendas</option>
+                <option value="Painel LED">Painel LED</option>
+                <option value="Outros">Outros</option>
+            </select>
+            <input type="text" placeholder="Potência">
+            <input type="text" placeholder="Material">
+            <input type="number" placeholder="Peso">
+            <input type="number" placeholder="Dimensões">
+            <input type="text" placeholder="Cor">
+            <input type="number" placeholder="Quantidade disponível">
+            <input type="number" placeholder="Quantidade mínima">
+        </div>
+
+        <div class="acoes">
+
+        <div class="barra-pesquisa">
+            <input 
+                type="search" 
+                id="pesquisa"
+                placeholder="Pesquisar equipamento..."
+            >
+            <button type="button" id="btnPesquisar">
+                Pesquisar
+            </button>
+        </div>
+
+        <button type="button" id="btnFiltros" class="btn-filtros">
+            Filtros
+        </button>
+
+    </div>
+
+
+    <!-- FILTROS -->
+    <div id="filtros" class="filtros">
+
+        <div class="filtro">
+            <label for="marca">Marca</label>
+            <input type="text" id="marca">
+        </div>
+
+        <div class="filtro">
+            <label for="modelo">Modelo</label>
+            <input type="text" id="modelo">
+        </div>
+
+        <div class="filtro">
+            <label for="categoria">Categoria</label>
+            <select id="categoria">
+                <option value="">Todas</option>
+                <option value="Cadeiras">Cadeiras</option>
+                <option value="Mesas">Mesas</option>
+                <option value="Áudio">Áudio</option>
+                <option value="Projetor">Projetor</option>
+                <option value="Microfone">Microfone</option>
+                <option value="Tendas">Tendas</option>
+                <option value="Painel LED">Painel LED</option>
+                <option value="Outros">Outros</option>
+            </select>
+
+            <button>Cadastrar</button>
+        </div>
+
+        <div class="filtro">
+            <label for="potencia">Potência</label>
+            <input type="text" id="potencia">
+        </div>
+
+        <div class="filtro">
+            <label for="material">Material</label>
+            <input type="text" id="material">
+        </div>
+
+        <div class="filtro">
+            <label for="peso">Peso</label>
+            <input type="number" id="peso">
+        </div>
+
+        <div class="filtro">
+            <label for="dimensoes">Dimensões</label>
+            <input type="text" id="dimensoes">
+        </div>
+
+        <div class="filtro">
+            <label for="cor">Cor</label>
+            <input type="text" id="cor">
+        </div>
+
+        <div class="filtro">
+            <label for="quantidade">Quantidade disponível</label>
+            <input type="number" id="quantidade">
+        </div>
+
+        <button type="button" id="limparFiltros">
+            Limpar filtros
+        </button>
+    </div>
+
+    <section class="alertas">
+
+        <h2>ALERTAS</h2>
+
+        <div id="listaAlertas">
+            <!-- Os equipamentos com estoque baixo aparecerão aqui -->
+        </div>
+
+    </section>
+
+</main>
+    </main>
+</body>
+</html>
