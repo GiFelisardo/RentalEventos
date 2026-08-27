@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: "Josefin Sans", sans-serif;
+
+    background-color: #e8f5fc;
+    color: #174d70;
+}
+
+/* ÁREA PRINCIPAL */
+
+.painel-equipamentos {
+
+    width: 95%;
+    max-width: 1400px;
+
+    margin: 30px auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* ============================== */
+/* LADO ESQUERDO */
+/* ============================== */
+
+.consulta {
+
+    background-color: #f8fcff;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 18px rgba(0, 80, 130, 0.10);
+}
+
+
+.consulta h1 {
+
+    color: #174d70;
+
+    margin-bottom: 25px;
+}
+
+
+/* ============================== */
+/* PESQUISA */
+/* ============================== */
+
+.acoes {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.barra-pesquisa {
+
+    display: flex;
+
+    flex: 1;
+
+    gap: 10px;
+}
+
+
+.barra-pesquisa input {
+
+    flex: 1;
+
+    height: 42px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #b9d5e5;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+
+.barra-pesquisa input:focus {
+
+    outline: none;
+
+    border: 2px solid #5bb8ed;
+
+    box-shadow: 0 0 5px rgba(91, 184, 237, 0.3);
+}
+
+
+/* BOTÕES */
+
+.barra-pesquisa button,
+.btn-filtros {
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #8ed2ff;
+
+    color: #174d70;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.barra-pesquisa button:hover,
+.btn-filtros:hover {
+
+    background-color: #5bb8ed;
+
+    transform: translateY(-1px);
+}
+
+
+/* ============================== */
+/* FILTROS */
+/* ============================== */
+
+.filtros {
+
+    display: none;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    background-color: #dff1fb;
+
+    border-radius: 12px;
+}
+
+
+.filtros.aberto {
+
+    display: grid;
+}
+
+
+.filtro {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.filtro label {
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #174d70;
+}
+
+
+.filtro input,
+.filtro select {
+
+    height: 38px;
+
+    padding: 8px;
+
+    border: 1px solid #b9d5e5;
+
+    border-radius: 7px;
+
+    background-color: white;
+}
+
+
+.filtro input:focus,
+.filtro select:focus {
+
+    outline: none;
+
+    border: 2px solid #5bb8ed;
+}
+
+
+/* ============================== */
+/* LISTAGEM */
+/* ============================== */
+
+.lista-equipamentos h2 {
+
+    color: #174d70;
+
+    font-size: 21px;
+
+    margin-bottom: 15px;
+}
+
+
+#listaEquipamentos {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+/* CARD */
+
+.equipamento {
+
+    padding: 18px;
+
+    background-color: white;
+
+    border: 1px solid #d3e7f2;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(0, 80, 130, 0.08);
+
+    transition: 0.2s;
+}
+
+
+.equipamento:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 7px 15px rgba(0, 80, 130, 0.14);
+}
+
+
+.equipamento h3 {
+
+    color: #174d70;
+
+    margin-bottom: 12px;
+}
+
+
+.equipamento p {
+
+    margin: 5px 0;
+
+    font-size: 13px;
+
+    color: #426b82;
+}
+
+
+/* ============================== */
+/* LADO DIREITO */
+/* ============================== */
+
+.gerenciamento {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+
+/* ============================== */
+/* CADASTRO */
+/* ============================== */
+
+.cadastro {
+
+    padding: 25px;
+
+    background-color: #c7e5f7;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 18px rgba(0, 80, 130, 0.10);
+}
+
+
+.cadastro h2 {
+
+    color: #174d70;
+
+    margin-bottom: 20px;
+}
+
+
+/* FORMULÁRIO */
+
+#formEquipamento {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.campo label {
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #174d70;
+}
+
+
+.campo input,
+.campo select {
+
+    height: 38px;
+
+    padding: 8px 10px;
+
+    border: 1px solid #b9d5e5;
+
+    border-radius: 7px;
+
+    background-color: white;
+}
+
+
+.campo input:focus,
+.campo select:focus {
+
+    outline: none;
+
+    border: 2px solid #5bb8ed;
+}
+
+
+/* BOTÃO CADASTRAR */
+
+.btn-cadastrar {
+
+    grid-column: 1 / -1;
+
+    height: 42px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #5bb8ed;
+
+    color: #174d70;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.btn-cadastrar:hover {
+
+    background-color: #3fa9e5;
+
+    transform: translateY(-1px);
+}
+
+
+/* ============================== */
+/* ALERTAS */
+/* ============================== */
+
+.alertas {
+
+    flex: 1;
+
+    min-height: 200px;
+
+    padding: 25px;
+
+    background-color: #fff4f4;
+
+    border: 1px solid #f0d1d1;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 18px rgba(130, 50, 50, 0.08);
+}
+
+
+.alertas h2 {
+
+    color: #b33a3a;
+
+    margin-bottom: 15px;
+}
+
+
+.alerta {
+
+    padding: 13px;
+
+    margin-bottom: 10px;
+
+    background-color: #ffe2e2;
+
+    border-left: 5px solid #d9534f;
+
+    border-radius: 7px;
+
+    color: #7a2c2c;
+}
