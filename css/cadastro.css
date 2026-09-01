@@ -210,35 +210,29 @@ body {
     border: 2px solid #5bb8ed;
 }
 
-
 /* ============================== */
 /* LISTAGEM */
 /* ============================== */
 
 .lista-equipamentos h2 {
-
     color: #174d70;
-
     font-size: 21px;
-
     margin-bottom: 15px;
 }
 
 
 #listaEquipamentos {
-
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 15px;
 }
 
 
-/* CARD */
+/* ============================== */
+/* CARDS DE EQUIPAMENTOS */
+/* ============================== */
 
 .equipamento {
-
     padding: 18px;
 
     background-color: white;
@@ -254,7 +248,6 @@ body {
 
 
 .equipamento:hover {
-
     transform: translateY(-3px);
 
     box-shadow: 0 7px 15px rgba(0, 80, 130, 0.14);
@@ -262,15 +255,15 @@ body {
 
 
 .equipamento h3 {
-
     color: #174d70;
 
     margin-bottom: 12px;
+
+    font-size: 18px;
 }
 
 
 .equipamento p {
-
     margin: 5px 0;
 
     font-size: 13px;
@@ -278,6 +271,84 @@ body {
     color: #426b82;
 }
 
+
+/* ============================== */
+/* ESTOQUE */
+/* ============================== */
+
+.estoque {
+    font-weight: bold;
+
+    margin-top: 15px !important;
+}
+
+
+.estoque.suficiente {
+    color: #29965a;
+}
+
+
+.estoque.baixo {
+    color: #d9534f;
+}
+
+
+/* ============================== */
+/* BOTÕES DO CARD */
+/* ============================== */
+
+.acoes-equipamento {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.acoes-equipamento button {
+    flex: 1;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+
+/* EDITAR */
+
+.btn-editar {
+    background-color: #8ed2ff;
+
+    color: #174d70;
+}
+
+
+.btn-editar:hover {
+    background-color: #5bb8ed;
+}
+
+
+/* EXCLUIR */
+
+.btn-excluir {
+    background-color: #ffd6d6;
+
+    color: #a83232;
+}
+
+
+.btn-excluir:hover {
+    background-color: #f5aaaa;
+}
 
 /* ============================== */
 /* LADO DIREITO */

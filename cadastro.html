@@ -1,161 +1,485 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+
+    <title>Cadastro de Equipamentos</title>
+
     <link rel="stylesheet" href="css/cadastro.css">
 </head>
+
 <body>
 
-    <main class="equipamentos">
-        <div class="cadastro-equipamentos">
-            <H1>Equipamentos</H1>
-            <input type="text" placeholder="Marca">
-            <input type="text" placeholder="Modelo">
-            <label for="categoria"></label>
-            <select name="categoria" id="categoria">
-                <option value="">Todas</option>
-                <option value="Cadeiras">Cadeiras</option>
-                <option value="Mesas">Mesas</option>
-                <option value="Áudio">Áudio</option>
-                <option value="Projetor">Projetor</option>
-                <option value="Microfone">Microfone</option>
-                <option value="Tendas">Tendas</option>
-                <option value="Painel LED">Painel LED</option>
-                <option value="Outros">Outros</option>
-            </select>
-            <input type="text" placeholder="Potência">
-            <input type="text" placeholder="Material">
-            <input type="number" placeholder="Peso">
-            <input type="number" placeholder="Dimensões">
-            <input type="text" placeholder="Cor">
-            <input type="number" placeholder="Quantidade disponível">
-            <input type="number" placeholder="Quantidade mínima">
+    <main class="painel-equipamentos">
 
-            <button>Cadastrar</button>
-        </div>
+        <section class="consulta">
 
-        <div class="acoes">
+            <h1>Equipamentos</h1>
 
-    <!-- FILTROS -->
-     <section class="consulta">
+            <div class="acoes">
 
-        <h1>Equipamentos</h1>
+                <div class="barra-pesquisa">
 
-        <!-- PESQUISA -->
-        <div class="acoes">
+                    <input
+                        type="search"
+                        id="pesquisa"
+                        placeholder="Pesquisar equipamento..."
+                    >
 
-            <div class="barra-pesquisa">
-                <input 
-                    type="search"
-                    id="pesquisa"
-                    placeholder="Pesquisar equipamento..."
-                >
+                    <button type="button">
+                        Pesquisar
+                    </button>
 
-                <button type="button">
-                    Pesquisar
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnFiltros"
+                    class="btn-filtros">
+
+                    Filtros
+
                 </button>
+
             </div>
 
-            <button 
-                type="button"
-                id="btnFiltros"
-                class="btn-filtros">
-                Filtros
-            </button>
+            <div id="filtros" class="filtros">
 
-        </div>
+                <div class="filtro">
+
+                    <label for="marcaFiltro">
+                        Marca
+                    </label>
+
+                    <input
+                        type="text"
+                        id="marcaFiltro"
+                    >
+
+                </div>
 
 
-        <!-- FILTROS -->
-        <div id="filtros" class="filtros">
+                <div class="filtro">
 
-            <div class="filtro">
-                <label>Marca</label>
-                <input type="text" id="marcaFiltro">
+                    <label for="modeloFiltro">
+                        Modelo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="modeloFiltro"
+                    >
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="categoriaFiltro">
+                        Categoria
+                    </label>
+
+                    <select id="categoriaFiltro">
+
+                        <option value="">
+                            Todas
+                        </option>
+
+                        <option value="Cadeiras">
+                            Cadeiras
+                        </option>
+
+                        <option value="Mesas">
+                            Mesas
+                        </option>
+
+                        <option value="Áudio">
+                            Áudio
+                        </option>
+
+                        <option value="Projetor">
+                            Projetor
+                        </option>
+
+                        <option value="Microfone">
+                            Microfone
+                        </option>
+
+                        <option value="Tendas">
+                            Tendas
+                        </option>
+
+                        <option value="Painel LED">
+                            Painel LED
+                        </option>
+
+                        <option value="Outros">
+                            Outros
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="potenciaFiltro">
+                        Potência
+                    </label>
+
+                    <input
+                        type="text"
+                        id="potenciaFiltro"
+                    >
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="materialFiltro">
+                        Material
+                    </label>
+
+                    <input
+                        type="text"
+                        id="materialFiltro"
+                    >
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="pesoFiltro">
+                        Peso
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pesoFiltro"
+                    >
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="dimensoesFiltro">
+                        Dimensões
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dimensoesFiltro"
+                    >
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="corFiltro">
+                        Cor
+                    </label>
+
+                    <input
+                        type="text"
+                        id="corFiltro"
+                    >
+
+                </div>
+
+
+                <div class="filtro">
+
+                    <label for="quantidadeFiltro">
+                        Quantidade disponível
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidadeFiltro"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="limparFiltros">
+
+                    Limpar filtros
+
+                </button>
+
             </div>
 
-            <div class="filtro">
-                <label>Modelo</label>
-                <input type="text" id="modeloFiltro">
+            <div class="lista-equipamentos">
+
+                <h2>
+                    Equipamentos cadastrados
+                </h2>
+
+
+                <div id="listaEquipamentos">
+                </div>
+
             </div>
 
-            <div class="filtro">
-                <label>Categoria</label>
-                <select id="categoriaFiltro">
-                    <option value="">Todas</option>
-                    <option>Cadeiras</option>
-                    <option>Mesas</option>
-                    <option>Caixas de som</option>
-                    <option>Projetores</option>
-                    <option>Microfones</option>
-                    <option>Tendas</option>
-                    <option>Painéis de LED</option>
-                </select>
+        </section>
+
+        <section class="gerenciamento">
+
+            <div class="cadastro">
+
+                <h2>
+                    Cadastrar equipamento
+                </h2>
+
+
+                <form id="formEquipamento">
+
+
+                    <div class="campo">
+
+                        <label for="marca">
+                            Marca
+                        </label>
+
+                        <input
+                            type="text"
+                            id="marca"
+                            placeholder="Ex.: Epson"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="modelo">
+                            Modelo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="modelo"
+                            placeholder="Ex.: PowerLite X49"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="categoria">
+                            Categoria
+                        </label>
+
+                        <select
+                            id="categoria"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="Cadeiras">
+                                Cadeiras
+                            </option>
+
+                            <option value="Mesas">
+                                Mesas
+                            </option>
+
+                            <option value="Áudio">
+                                Áudio
+                            </option>
+
+                            <option value="Projetor">
+                                Projetor
+                            </option>
+
+                            <option value="Microfone">
+                                Microfone
+                            </option>
+
+                            <option value="Tendas">
+                                Tendas
+                            </option>
+
+                            <option value="Painel LED">
+                                Painel LED
+                            </option>
+
+                            <option value="Outros">
+                                Outros
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="potencia">
+                            Potência
+                        </label>
+
+                        <input
+                            type="text"
+                            id="potencia"
+                            placeholder="Ex.: 330W"
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="material">
+                            Material
+                        </label>
+
+                        <input
+                            type="text"
+                            id="material"
+                            placeholder="Ex.: Plástico"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="peso">
+                            Peso
+                        </label>
+
+                        <input
+                            type="text"
+                            id="peso"
+                            placeholder="Ex.: 3kg"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="dimensoes">
+                            Dimensões
+                        </label>
+
+                        <input
+                            type="text"
+                            id="dimensoes"
+                            placeholder="Ex.: 30x25x10cm"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cor">
+                            Cor
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cor"
+                            placeholder="Ex.: Branco"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="quantidadeDisponivel">
+                            Quantidade disponível
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeDisponivel"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="quantidadeMinima">
+                            Quantidade mínima
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeMinima"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+                    <button
+                        type="submit"
+                        id="btnCadastrar"
+                        class="btn-cadastrar">
+
+                        Cadastrar equipamento
+
+                    </button>
+
+
+                </form>
+
             </div>
 
-            <div class="filtro">
-                <label>Potência</label>
-                <input type="text">
+
+            <!-- ================================= -->
+            <!-- ALERTAS -->
+            <!-- ================================= -->
+
+            <div class="alertas">
+
+                <h2>
+                    ⚠ ALERTAS
+                </h2>
+
+
+                <div id="listaAlertas">
+
+                    <!--
+                        Os alertas serão inseridos
+                        automaticamente pelo JavaScript.
+                    -->
+
+                </div>
+
             </div>
 
-            <div class="filtro">
-                <label>Material</label>
-                <input type="text">
-            </div>
+        </section>
 
-            <div class="filtro">
-                <label>Peso</label>
-                <input type="text">
-            </div>
-
-            <div class="filtro">
-                <label>Dimensões</label>
-                <input type="text">
-            </div>
-
-            <div class="filtro">
-                <label>Cor</label>
-                <input type="text">
-            </div>
-
-            <div class="filtro">
-                <label>Quantidade disponível</label>
-                <input type="number">
-
-            <button type="button" id="limparFiltros">
-                Limpar filtros
-            </button>
-            </div>
-
-        </div>
-
-
-        <!-- LISTAGEM -->
-        <div class="lista-equipamentos">
-
-            <h2>Equipamentos cadastrados</h2>
-
-            <div id="listaEquipamentos">
-                <!-- Os equipamentos serão inseridos aqui pelo JavaScript -->
-            </div>
-
-        </div>
-
-    </section>
-    </div>
-
-        <div class="alertas">
-            <h2>⚠ ALERTAS</h2>
-            <div id="listaAlertas">
-                <!-- Alertas serão inseridos automaticamente -->
-            </div>
-
-        </div>
-
-
-</main>
     </main>
+
+    <script src="js/cadastro.js"></script>
 </body>
+
 </html>
