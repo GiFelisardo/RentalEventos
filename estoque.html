@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet');
+    </style>
+    <title>Estoque - Rental Eventos</title>
+
+    <link rel="stylesheet" href="css/estoque.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+
+        <div class="empresa">
+            <h1>Rental Eventos</h1>
+            <p>Locação de equipamentos para eventos</p>
+        </div>
+
+       <div class="menu-container">
+
+        <button id="btnMenu" class="btn-menu">
+            ☰
+        </button>
+
+        <div id="menu" class="menu">
+
+            <a href="cadastro.html">Equipamentos</a>
+            <a href="estoque.html">Estoque</a>
+            <a href="index.html">Sair</a>
+
+        </div>
+
+    </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+    <main class="container">
+
+        <h2>Controle de Estoque</h2>
+
+        <p class="descricao">
+            Registre e acompanhe as movimentações dos equipamentos.
+        </p>
+
+
+        <!-- FORMULÁRIO -->
+        <section class="card">
+
+            <h3>Registrar movimentação</h3>
+
+            <form id="formEstoque">
+
+                <div class="campo">
+                    <label for="equipamentosId">
+                        ID do equipamento
+                    </label>
+
+                    <input
+                        type="number"
+                        id="equipamentosId"
+                        placeholder="Digite o ID do equipamento"
+                        required
+                    >
+                </div>
+
+
+                <div class="campo">
+                    <label for="tipoMovimentacao">
+                        Tipo de movimentação
+                    </label>
+
+                    <select id="tipoMovimentacao" required>
+
+                        <option value="">
+                            Selecione uma movimentação
+                        </option>
+
+                        <option value="ENTRADA">
+                            Entrada
+                        </option>
+
+                        <option value="SAIDA">
+                            Saída
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="campo">
+                    <label for="funcionarioId">
+                        ID do funcionário
+                    </label>
+
+                    <input
+                        type="number"
+                        id="funcionarioId"
+                        placeholder="Digite o ID do funcionário"
+                        required
+                    >
+                </div>
+
+
+                <div class="campo">
+                    <label for="numeroLocacoes">
+                        Número de locações
+                    </label>
+
+                    <input
+                        type="number"
+                        id="numeroLocacoes"
+                        placeholder="Quantidade de itens"
+                        min="1"
+                    >
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="btnRegistrar"
+                    class="btn-registrar">
+
+                    Registrar movimentação
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- LISTAGEM -->
+        <section class="card movimentacoes">
+
+            <div class="titulo-listagem">
+
+                <h3>Movimentações registradas</h3>
+
+            </div>
+
+            <div id="listaMovimentacoes">
+
+                <p>
+                    Nenhuma movimentação registrada.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/estoque.js"></script>
+
+</body>
+
+</html>

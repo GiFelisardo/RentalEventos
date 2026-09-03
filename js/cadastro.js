@@ -4,6 +4,28 @@ const form = document.getElementById("formEquipamento");
 const listaEquipamentos = document.getElementById("listaEquipamentos");
 const listaAlertas = document.getElementById("listaAlertas");
 
+const btnFiltros = document.getElementById("btnFiltros");
+const filtros = document.getElementById("filtros");
+
+btnFiltros.addEventListener("click", function () {
+
+    filtros.classList.toggle("ativo");
+
+});
+
+const btnAplicarFiltros =
+    document.getElementById("aplicarFiltros");
+
+btnAplicarFiltros.addEventListener("click", function () {
+
+    aplicarFiltros();
+
+});
+
+let equipamentosCadastrados = [];
+let todosEquipamentos = [];
+let equipamentoEditandoId = null;
+
 
 // ============================================
 // CADASTRAR EQUIPAMENTO
@@ -34,6 +56,68 @@ form.addEventListener("submit", async function (event) {
 
     try {
 
+        // ============================================
+        // EDITAR
+        // ============================================
+
+        if (equipamentoEditandoId !== null) {
+
+            const resposta = await fetch(
+                `${API_URL}/${equipamentoEditandoId}`,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(equipamento)
+                }
+            );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Erro ao editar equipamento. Status: "
+                    + resposta.status
+                );
+
+            }
+
+
+            const equipamentoEditado = await resposta.json();
+
+            console.log(
+                "Equipamento editado:",
+                equipamentoEditado
+            );
+
+
+            alert("Equipamento editado com sucesso!");
+
+
+            // Volta para o modo cadastro
+            equipamentoEditandoId = null;
+
+            form.reset();
+
+
+            // Volta o texto do botão
+            document.getElementById("btnCadastrar").textContent =
+                "Cadastrar equipamento";
+
+
+            carregarEquipamentos();
+
+            return;
+        }
+
+
+        // ============================================
+        // CADASTRAR
+        // ============================================
+
         const resposta = await fetch(API_URL, {
 
             method: "POST",
@@ -43,6 +127,7 @@ form.addEventListener("submit", async function (event) {
             },
 
             body: JSON.stringify(equipamento)
+
         });
 
 
@@ -58,36 +143,36 @@ form.addEventListener("submit", async function (event) {
 
         const equipamentoCadastrado = await resposta.json();
 
-        console.log("Equipamento cadastrado:", equipamentoCadastrado);
+        console.log(
+            "Equipamento cadastrado:",
+            equipamentoCadastrado
+        );
 
 
         alert("Equipamento cadastrado com sucesso!");
 
 
-        // Limpa os campos
         form.reset();
 
 
-        // Atualiza a lista
         carregarEquipamentos();
+
 
     } catch (erro) {
 
         console.error("Erro:", erro);
 
-        alert("Não foi possível cadastrar o equipamento.");
+        alert("Não foi possível cadastrar/editar o equipamento.");
 
     }
 
 });
-
 
 // ============================================
 // LISTAR EQUIPAMENTOS
 // ============================================
 
 async function carregarEquipamentos() {
-
     try {
 
         const resposta = await fetch(API_URL);
@@ -102,6 +187,9 @@ async function carregarEquipamentos() {
         }
 
         const equipamentos = await resposta.json();
+
+        equipamentosCadastrados = equipamentos;
+        todosEquipamentos = equipamentos;
 
         mostrarEquipamentos(equipamentos);
         mostrarAlertas(equipamentos);
@@ -337,17 +425,304 @@ async function excluirEquipamento(id) {
 // EDITAR
 // ============================================
 
-function editarEquipamento(id) {
+async function editarEquipamento(id) {
 
-    alert(
-        "A função de edição será implementada na próxima etapa."
-    );
+    try {
+
+        const resposta = await fetch(`${API_URL}/${id}`);
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Não foi possível buscar o equipamento."
+            );
+
+        }
+
+
+        const equipamento = await resposta.json();
+
+
+        // Guarda o ID do equipamento que será editado
+        equipamentoEditandoId = id;
+
+
+        // Preenche o formulário
+        document.getElementById("marca").value =
+            equipamento.marca;
+
+        document.getElementById("modelo").value =
+            equipamento.modelo;
+
+        document.getElementById("categoria").value =
+            equipamento.categoria;
+
+        document.getElementById("potencia").value =
+            equipamento.potencia;
+
+        document.getElementById("material").value =
+            equipamento.material;
+
+        document.getElementById("peso").value =
+            equipamento.peso;
+
+        document.getElementById("dimensoes").value =
+            equipamento.dimensoes;
+
+        document.getElementById("cor").value =
+            equipamento.cor;
+
+        document.getElementById("quantidadeDisponivel").value =
+            equipamento.quantidadeDisponivel;
+
+        document.getElementById("quantidadeMinima").value =
+            equipamento.quantidadeMinima;
+
+
+        // Muda o texto do botão
+        document.getElementById("btnCadastrar").textContent =
+            "Salvar alterações";
+
+
+        // Rola a página até o formulário
+        document.querySelector(".cadastro").scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+    } catch (erro) {
+
+        console.error("Erro ao editar:", erro);
+
+        alert("Não foi possível carregar o equipamento para edição.");
+
+    }
 
 }
 
+// ============================================
+// PESQUISA
+// ============================================
+
+const campoPesquisa = document.getElementById("pesquisa");
+
+campoPesquisa.addEventListener("input", function () {
+
+    const texto = campoPesquisa.value.toLowerCase().trim();
+
+    const resultados = equipamentosCadastrados.filter(function (equipamento) {
+
+        return (
+            equipamento.marca.toLowerCase().includes(texto) ||
+            equipamento.modelo.toLowerCase().includes(texto) ||
+            equipamento.categoria.toLowerCase().includes(texto) ||
+            equipamento.potencia.toLowerCase().includes(texto) ||
+            equipamento.material.toLowerCase().includes(texto) ||
+            equipamento.peso.toLowerCase().includes(texto) ||
+            equipamento.dimensoes.toLowerCase().includes(texto) ||
+            equipamento.cor.toLowerCase().includes(texto)
+        );
+
+    });
+
+    mostrarEquipamentos(resultados);
+
+});
 
 // ============================================
-// INICIALIZAÇÃO
+// FILTROS
 // ============================================
+
+const camposFiltro = [
+    "marcaFiltro",
+    "modeloFiltro",
+    "categoriaFiltro",
+    "potenciaFiltro",
+    "materialFiltro",
+    "pesoFiltro",
+    "dimensoesFiltro",
+    "corFiltro",
+    "quantidadeFiltro"
+];
+
+// ============================================
+// APLICAR FILTROS
+// ============================================
+
+function aplicarFiltros() {
+
+    const marca = document
+        .getElementById("marcaFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const modelo = document
+        .getElementById("modeloFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const categoria = document
+        .getElementById("categoriaFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const potencia = document
+        .getElementById("potenciaFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const material = document
+        .getElementById("materialFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const peso = document
+        .getElementById("pesoFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const dimensoes = document
+        .getElementById("dimensoesFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const cor = document
+        .getElementById("corFiltro")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const quantidade = document
+        .getElementById("quantidadeFiltro")
+        .value
+        .trim();
+
+
+    const equipamentosFiltrados = todosEquipamentos.filter(
+        function (equipamento) {
+
+            const correspondeMarca =
+                !marca ||
+                equipamento.marca
+                    .toLowerCase()
+                    .includes(marca);
+
+
+            const correspondeModelo =
+                !modelo ||
+                equipamento.modelo
+                    .toLowerCase()
+                    .includes(modelo);
+
+
+            const correspondeCategoria =
+                !categoria ||
+                equipamento.categoria
+                    .toLowerCase() === categoria;
+
+
+            const correspondePotencia =
+                !potencia ||
+                equipamento.potencia
+                    .toLowerCase()
+                    .includes(potencia);
+
+
+            const correspondeMaterial =
+                !material ||
+                equipamento.material
+                    .toLowerCase()
+                    .includes(material);
+
+
+            const correspondePeso =
+                !peso ||
+                equipamento.peso
+                    .toLowerCase()
+                    .includes(peso);
+
+
+            const correspondeDimensoes =
+                !dimensoes ||
+                equipamento.dimensoes
+                    .toLowerCase()
+                    .includes(dimensoes);
+
+
+            const correspondeCor =
+                !cor ||
+                equipamento.cor
+                    .toLowerCase()
+                    .includes(cor);
+
+
+            const correspondeQuantidade =
+                !quantidade ||
+                equipamento.quantidadeDisponivel ==
+                Number(quantidade);
+
+
+            return (
+                correspondeMarca &&
+                correspondeModelo &&
+                correspondeCategoria &&
+                correspondePotencia &&
+                correspondeMaterial &&
+                correspondePeso &&
+                correspondeDimensoes &&
+                correspondeCor &&
+                correspondeQuantidade
+            );
+
+        }
+    );
+
+
+    mostrarEquipamentos(equipamentosFiltrados);
+
+}
+
+// ============================================
+// LIMPAR FILTROS
+// ============================================
+
+document
+    .getElementById("limparFiltros")
+    .addEventListener("click", function () {
+
+        document.getElementById("marcaFiltro").value = "";
+        document.getElementById("modeloFiltro").value = "";
+        document.getElementById("categoriaFiltro").value = "";
+        document.getElementById("potenciaFiltro").value = "";
+        document.getElementById("materialFiltro").value = "";
+        document.getElementById("pesoFiltro").value = "";
+        document.getElementById("dimensoesFiltro").value = "";
+        document.getElementById("corFiltro").value = "";
+        document.getElementById("quantidadeFiltro").value = "";
+
+        mostrarEquipamentos(todosEquipamentos);
+
+    });
+
+// ============================================
+// MENU
+// ============================================
+
+const btnMenu = document.getElementById("btnMenu");
+const menu = document.getElementById("menu");
+
+btnMenu.addEventListener("click", function () {
+
+    menu.classList.toggle("ativo");
+
+});
 
 carregarEquipamentos();

@@ -4,11 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet');
+    </style>
 
     <title>Cadastro de Equipamentos</title>
 
     <link rel="stylesheet" href="css/cadastro.css">
 </head>
+
+    <header>
+
+    <div class="titulo-header">
+        <h1>Rental Eventos</h1>
+        <h2>Locação de equipamentos</h2>
+    </div>
+
+    <div class="menu-container">
+
+        <button id="btnMenu" class="btn-menu">
+            ☰
+        </button>
+
+        <div id="menu" class="menu">
+
+            <a href="cadastro.html">Equipamentos</a>
+            <a href="#">Estoque</a>
+            <a href="index.html">Sair</a>
+
+        </div>
+
+    </div>
+
+</header>
 
 <body>
 
@@ -27,10 +56,6 @@
                         id="pesquisa"
                         placeholder="Pesquisar equipamento..."
                     >
-
-                    <button type="button">
-                        Pesquisar
-                    </button>
 
                 </div>
 
@@ -209,6 +234,16 @@
                 </div>
 
 
+                <div class="botoes-filtros">
+
+                <button
+                    type="button"
+                    id="aplicarFiltros">
+
+                    Aplicar filtros
+
+                </button>
+
                 <button
                     type="button"
                     id="limparFiltros">
@@ -217,6 +252,7 @@
 
                 </button>
 
+            </div>
             </div>
 
             <div class="lista-equipamentos">
