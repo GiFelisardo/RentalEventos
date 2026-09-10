@@ -2,17 +2,36 @@ package com.senaibackend.rental_eventos.dto;
 
 public class LoginResponse {
 
-    private String token;
+    private Long id;
+    private String nome;
+    private String setor;
+    private String turno;
 
-    public LoginResponse(String token) {
-        this.token = token;
+    public LoginResponse(
+            Long id,
+            String nome,
+            String setor,
+            String turno) {
+
+        this.id = id;
+        this.nome = nome;
+        this.setor = setor;
+        this.turno = turno;
     }
 
-    public String getToken() {
-        return token;
+    public Long getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public String getTurno() {
+        return turno;
     }
 }

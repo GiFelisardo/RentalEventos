@@ -18,7 +18,7 @@ public class Funcionario {
     @Column(nullable = false, unique = true)
     private String nome;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String setor;
 
     @Column(nullable = false)

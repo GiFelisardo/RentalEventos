@@ -1,4 +1,4 @@
-package com.senaibackend.rental_eventos.repository;
+package com.senaibackend.rental_eventos.repositories;
 
 import java.util.Optional;
 

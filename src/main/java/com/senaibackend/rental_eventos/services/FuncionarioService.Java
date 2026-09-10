@@ -36,15 +36,28 @@ public class FuncionarioService {
         return funcionarioRepository.save(funcionario);
     }
 
-    public Funcionario login(String nome, String senha) {
+    public Funcionario login(String nome, String senha, String setor) {
 
-    // Procura o funcionário pelo nome
-    Funcionario funcionario = funcionarioRepository.findByNome(nome)
-            .orElseThrow(() -> new RuntimeException("Funcionário não encontrado"));
+    Funcionario funcionario = funcionarioRepository
+            .findByNome(nome)
+            .orElseThrow(() ->
+                    new RuntimeException(
+                            "Funcionário não encontrado"
+                    )
+            );
 
-    // Compara a senha digitada com a senha criptografada do banco
+    if (!funcionario.getSetor().equalsIgnoreCase(setor)) {
+
+        throw new RuntimeException(
+                "O funcionário não pertence a este setor."
+        );
+    }
+
     if (!passwordEncoder.matches(senha, funcionario.getSenha())) {
-        throw new RuntimeException("Senha incorreta");
+
+        throw new RuntimeException(
+                "Senha incorreta"
+        );
     }
 
     return funcionario;

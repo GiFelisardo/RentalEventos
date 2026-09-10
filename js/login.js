@@ -8,11 +8,15 @@ form.addEventListener("submit", async function (event) {
 
     const nome = document.getElementById("nome").value;
     const senha = document.getElementById("senha").value;
+    const setor = document.getElementById("setor").value;
     const mensagemErro = document.getElementById("mensagemErro");
+
+    mensagemErro.textContent = "";
 
     const dadosLogin = {
         nome: nome,
-        senha: senha
+        senha: senha,
+        setor: setor
     };
 
     try {
@@ -26,12 +30,20 @@ form.addEventListener("submit", async function (event) {
         });
 
         if (!resposta.ok) {
-            throw new Error("Nome ou senha incorretos");
+
+            const mensagem = await resposta.text();
+
+            throw new Error(
+                mensagem || "Falha na autenticação."
+            );
         }
 
         const funcionario = await resposta.json();
 
         console.log("Login realizado:", funcionario);
+
+        // Redireciona após o login
+        window.location.href = "cadastro.html";
 
     } catch (erro) {
 

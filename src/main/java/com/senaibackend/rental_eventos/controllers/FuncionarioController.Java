@@ -4,12 +4,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.senaibackend.rental_eventos.models.Funcionario;
-import com.senaibackend.rental_eventos.service.FuncionarioService;
+import com.senaibackend.rental_eventos.services.FuncionarioService;
 import com.senaibackend.rental_eventos.dto.LoginRequest;
-import com.senaibackend.rental_eventos.service.FuncionarioService;
 
 @RestController
 @RequestMapping("/funcionario")
+@CrossOrigin(origins = "*")
 public class FuncionarioController {
 
     private final FuncionarioService funcionarioService;
@@ -28,20 +28,22 @@ public class FuncionarioController {
         return ResponseEntity.ok(novoFuncionario);
     }
 
-    @GetMapping("/perfil")
-    public ResponseEntity<String> perfil() {
-        return ResponseEntity.ok("Você está autenticado!");
+    @PostMapping("/login")
+    public ResponseEntity<Funcionario> login(
+            @RequestBody LoginRequest loginRequest) {
 
-        @PostMapping("/login")
-public ResponseEntity<Funcionario> login(
-        @RequestBody LoginRequest loginRequest) {
+        Funcionario funcionario = funcionarioService.login(
+                loginRequest.getNome(),
+                loginRequest.getSenha(),
+                loginRequest.getSetor()
+        );
 
-    Funcionario funcionario = funcionarioService.login(
-            loginRequest.getNome(),
-            loginRequest.getSenha()
-    );
+        return ResponseEntity.ok(funcionario);
+    }
 
-    return ResponseEntity.ok(funcionario);
-}
+    // TESTE TEMPORÁRIO
+    @GetMapping("/teste")
+    public String teste() {
+        return "FuncionarioController está funcionando!";
     }
 }
