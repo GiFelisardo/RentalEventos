@@ -1,5 +1,6 @@
 package com.senaibackend.rental_eventos.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,8 @@ import com.senaibackend.rental_eventos.service.FuncionarioService;
 @RequestMapping("/funcionario")
 public class FuncionarioController {
 
-    private final FuncionarioService funcionarioService;
+    @Autowired 
+    private FuncionarioService funcionarioService;
 
     public FuncionarioController(FuncionarioService funcionarioService) {
         this.funcionarioService = funcionarioService;
