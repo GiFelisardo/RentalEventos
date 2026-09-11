@@ -11,7 +11,7 @@ public class Estoque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "equipamentosid", nullable = false)
+    @Column(name = "equipamentosId", nullable = false)
     private Integer equipamentosId;
 
     @Column(name = "entrada")
@@ -20,7 +20,7 @@ public class Estoque {
     @Column(name = "saida")
     private LocalDateTime saida;
 
-    @Column(name = "funcionarioid", nullable = false)
+    @Column(name = "funcionarioId", nullable = false)
     private Integer funcionarioId;
 
     @Column(name = "tipo_movimentacao", nullable = false)
@@ -33,6 +33,16 @@ public class Estoque {
     public Estoque() {
     }
 
+
+    public Estoque(Integer id, Integer equipamentosId, LocalDateTime entrada, LocalDateTime saida, Integer funcionarioId, String tipoMovimentacao, Integer numeroLocacoes) {
+       this.id = id;
+       this.equipamentosId = equipamentosId;
+       this.entrada = entrada;
+       this.saida = saida;
+       this.funcionarioId = funcionarioId;
+       this.tipoMovimentacao = tipoMovimentacao;
+       this.numeroLocacoes = numeroLocacoes;
+    }
 
     public Integer getId() {
         return id;

@@ -30,6 +30,14 @@ public class Funcionario {
 
     public Funcionario() {
     }
+    
+    public Funcionario(Long id, String nome, String setor, String turno, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.setor = setor;
+        this.turno = turno;
+        this.senha = senha;
+    }
 
 
     public Long getId() {

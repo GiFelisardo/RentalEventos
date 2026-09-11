@@ -4,11 +4,13 @@ import com.senaibackend.rental_eventos.models.Funcionario;
 import com.senaibackend.rental_eventos.repositories.FuncionarioRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class FuncionarioService {
 
-    private final FuncionarioRepository funcionarioRepository;
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
     private final PasswordEncoder passwordEncoder;
 
     public FuncionarioService(

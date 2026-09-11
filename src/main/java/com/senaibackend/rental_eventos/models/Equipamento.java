@@ -1,5 +1,7 @@
 package com.senaibackend.rental_eventos.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,19 +12,51 @@ public class Equipamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "marca", nullable = false)
     private String marca;
+
+    @Column(name = "modelo", nullable = false)
     private String modelo;
+
+    @Column(name = "categoria", nullable = false)
     private String categoria;
+
+    @Column(name = "potencia", nullable = false)
     private String potencia;
+
+    @Column(name = "material", nullable = false)
     private String material;
+
+    @Column(name = "peso", nullable = false)
     private String peso;
+
+    @Column(name = "dimensoes", nullable = false)
     private String dimensoes;
+
+    @Column(name = "cor", nullable = false)
     private String cor;
 
+    @Column(name = "quantidade_disponivel", nullable = false)
     private Integer quantidadeDisponivel;
+
+    @Column(name = "quantidade_minima", nullable = false)
     private Integer quantidadeMinima;
 
     public Equipamento() {
+    }
+
+    public Equipamento(Integer id, String marca, String modelo, String categoria, String potencia, String material, String peso, String dimensoes, String cor, Integer quantidadeDisponivel, Integer quantidadeMinima) {
+        this.id = id;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.categoria = categoria;
+        this.potencia = potencia;
+        this.material = material;
+        this.peso = peso;
+        this.dimensoes = dimensoes;
+        this.cor = cor;
+        this.quantidadeDisponivel = quantidadeDisponivel;
+        this.quantidadeMinima = quantidadeMinima;
     }
 
     public Integer getId() {

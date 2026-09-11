@@ -26,7 +26,7 @@ create table Estoque(
 	EquipamentosId int,
 	constraint Equipamentos_id foreign key (EquipamentosId)
 	references Equipamentos (Id),
-	Entrada timestamp not null,
+	Entrada timestamp,
 	Saida timestamp,
 	FuncionarioId int,
 	constraint Funcionario_id foreign key (FuncionarioId)

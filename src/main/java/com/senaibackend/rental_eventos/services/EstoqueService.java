@@ -2,6 +2,7 @@ package com.senaibackend.rental_eventos.services;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +14,8 @@ import com.senaibackend.rental_eventos.repositories.EstoqueRepository;
 @Service
 public class EstoqueService {
 
-    private final EstoqueRepository estoqueRepository;
-    private final EquipamentoRepository equipamentoRepository;
+    @Autowired
+    private EstoqueRepository estoqueRepository;
 
     public EstoqueService(
             EstoqueRepository estoqueRepository,
