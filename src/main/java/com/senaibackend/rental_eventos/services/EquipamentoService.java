@@ -11,9 +11,4 @@ public class EquipamentoService {
 
     @Autowired 
     private EquipamentoRepository equipamentoRepository;
-
-    
-
-
-    
 }
